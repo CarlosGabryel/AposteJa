@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "209307217939",
+    "project_id": "apostedamelhorforma",
+    "storage_bucket": "apostedamelhorforma.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209307217939:android:874c97d75f0e1ba1404fe6",
+        "android_client_info": {
+          "package_name": "com.nayane.estadoatividade"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9RwJw1qaUj7-vdgD7C6083R2PIWfokA4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

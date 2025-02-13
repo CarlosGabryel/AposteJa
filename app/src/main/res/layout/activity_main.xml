@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="#2E7D32">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Jogo de Roleta"
+        android:textSize="24sp"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"/>
+
+    <EditText
+        android:id="@+id/editTextAposta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Digite o valor da aposta"
+        android:inputType="number"
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"/>
+
+    <!-- Campo para escolher número ao apostar em número -->
+    <EditText
+        android:id="@+id/editTextNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Escolha um número (0-36)"
+        android:inputType="number"
+        android:background="#FFFFFF"
+        android:padding="10dp"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"/>
+
+    <!-- Spinner para escolher cor ao apostar em cor -->
+    <Spinner
+        android:id="@+id/spinnerCor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"/>
+
+    <!-- Spinner para escolher Ímpar ou Par ao apostar -->
+    <Spinner
+        android:id="@+id/spinnerParidade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/buttonNumero"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apostar em Número"/>
+
+    <Button
+        android:id="@+id/buttonCor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apostar na Cor"/>
+
+    <Button
+        android:id="@+id/buttonParImpar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apostar em Ímpar ou Par"/>
+
+    <Button
+        android:id="@+id/buttonGirar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Girar Roleta"
+        android:backgroundTint="#FF5722"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/textViewResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Resultado aparecerá aqui"
+        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>
