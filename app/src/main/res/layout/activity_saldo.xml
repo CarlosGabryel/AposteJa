@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="16dp"
+    android:background="#F5F5F5">
+
+    <!-- Título -->
+    <TextView
+        android:id="@+id/tituloSaldo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seu Saldo"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="#333333"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- Saldo Atual -->
+    <TextView
+        android:id="@+id/saldoTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saldo Atual: R$ 0"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="#4CAF50"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Botão de Saque -->
+    <Button
+        android:id="@+id/sacarButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sacar R$50"
+        android:backgroundTint="#D32F2F"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"
+        android:layout_marginBottom="12dp"/>
+
+    <!-- Botão de Depósito -->
+    <Button
+        android:id="@+id/depositarButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Depositar R$100"
+        android:backgroundTint="#1976D2"
+        android:textColor="#FFFFFF"
+        android:padding="12dp"/>
+
+    <Button
+        android:id="@+id/buttonVoltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:backgroundTint="@color/black"
+        android:textColor="#FFFFFF"
+        android:layout_marginTop="10dp"/>
+
+</LinearLayout>

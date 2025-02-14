@@ -8,13 +8,14 @@
     android:orientation="vertical"
     android:background="#2E7D32">
 
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jogo de Roleta"
-        android:textSize="24sp"
         android:textColor="#FFFFFF"
-        android:textStyle="bold"/>
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/editTextAposta"
@@ -87,8 +88,17 @@
         android:id="@+id/textViewResultado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:text="Resultado aparecerá aqui"
-        android:textSize="18sp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/buttonVoltar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:backgroundTint="@color/black"
         android:textColor="#FFFFFF"
         android:layout_marginTop="10dp"/>
 

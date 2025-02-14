@@ -1,6 +1,7 @@
 package com.nayane.estadoatividade
 
 import android.Manifest
+import android.app.Dialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
@@ -19,6 +20,8 @@ import kotlin.random.Random
 
 class MainActivity : AppCompatActivity() {
 
+    private var tipoAposta = 1 // Define o tipo de aposta inicialmente como Número
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,16 +34,20 @@ class MainActivity : AppCompatActivity() {
         val buttonCor = findViewById<Button>(R.id.buttonCor)
         val buttonParImpar = findViewById<Button>(R.id.buttonParImpar)
         val buttonGirar = findViewById<Button>(R.id.buttonGirar)
+        val buttonVoltar = findViewById<Button>(R.id.buttonVoltar)
         val textViewResultado = findViewById<TextView>(R.id.textViewResultado)
 
-        var tipoAposta = 1
-
+        // Configurar Spinner para Cores
         val cores = arrayOf("Vermelho", "Preto")
-        spinnerCor.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, cores)
+        val adapterCores = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, cores)
+        spinnerCor.adapter = adapterCores
 
+        // Configurar Spinner para Ímpar/Par
         val paridade = arrayOf("Ímpar", "Par")
-        spinnerParidade.adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, paridade)
+        val adapterParidade = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, paridade)
+        spinnerParidade.adapter = adapterParidade
 
+        // Adiciona funcionalidade para alternar entre os tipos de aposta
         buttonNumero.setOnClickListener {
             tipoAposta = 1
             editTextNumero.visibility = View.VISIBLE
@@ -62,10 +69,19 @@ class MainActivity : AppCompatActivity() {
             spinnerParidade.visibility = View.VISIBLE
         }
 
+        buttonVoltar.setOnClickListener {
+            startActivity(Intent(this, HomeActivity::class.java))
+            finish()
+        }
+
         buttonGirar.setOnClickListener {
-            val numeroSorteado = Random.nextInt(37)
-            val corSorteada = getCor(numeroSorteado)
             val apostaValor = editTextAposta.text.toString().toIntOrNull() ?: 0
+            val numeroSorteado = if (tipoAposta == 1 && editTextNumero.text.toString().toIntOrNull() == 13) {
+                13 // A roleta "rouba" para garantir a vitória no número 13
+            } else {
+                Random.nextInt(37)
+            }
+            val corSorteada = getCor(numeroSorteado)
             var resultado = "Escolha inválida!"
             var ganhou = false
             var premio = 0
@@ -77,6 +93,9 @@ class MainActivity : AppCompatActivity() {
                         ganhou = true
                         premio = apostaValor * 35
                         resultado = "Ganhou! $premio"
+                        if (numeroSorteado == 13) {
+                            mostrarImagemVitoria()
+                        }
                     } else {
                         resultado = "Perdeu! Sorteado: $numeroSorteado"
                     }
@@ -118,10 +137,19 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun mostrarImagemVitoria() {
+        val dialog = Dialog(this)
+        dialog.setContentView(R.layout.dialog_vitoria)
+        val closeButton = dialog.findViewById<ImageView>(R.id.closeButton)
+        closeButton.setOnClickListener {
+            dialog.dismiss()
+        }
+        dialog.show()
+    }
+
     private fun sendGameNotification(ganhou: Boolean, valor: Int, aposta: Int) {
         val channelId = "game_channel"
         val notificationId = 2
-
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(
@@ -138,7 +166,7 @@ class MainActivity : AppCompatActivity() {
 
         val titulo = if (ganhou) "Parabéns, você ganhou!" else "Infelizmente, você perdeu."
         val mensagem = if (ganhou) "Você ganhou R$$valor!" else "Você perdeu R$$aposta."
-        val icone = if (ganhou) R.drawable.icon else R.drawable.icon
+        val icone = if (ganhou) R.drawable.ic_view else R.drawable.ic_close
 
         val notification = NotificationCompat.Builder(this, channelId)
             .setSmallIcon(icone)

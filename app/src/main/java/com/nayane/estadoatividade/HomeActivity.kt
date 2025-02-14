@@ -21,14 +21,18 @@ class HomeActivity : AppCompatActivity() {
             // Encerra a sessão e volta para a tela de login
             val intent = Intent(this, InitialActivity::class.java)
             startActivity(intent)
-            finish()
         }
 
         binding.jogoButton.setOnClickListener{
             //Redirecionamento para a guia do jogo
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            finish()
+        }
+
+        binding.saldoButton.setOnClickListener{
+            //Redirecionamento para a guia do jogo
+            val intent = Intent(this, SaldoActivity::class.java)
+            startActivity(intent)
         }
     }
 }
