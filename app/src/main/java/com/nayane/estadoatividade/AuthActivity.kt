@@ -63,7 +63,7 @@ class AuthActivity : AppCompatActivity() {
                     val user = auth.currentUser
                     updateUI(user)
                 } else {
-                    Toast.makeText(this, "Falha no cadastro: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Falha no cadastro", Toast.LENGTH_LONG).show()
                 }
             }
     }
@@ -76,7 +76,7 @@ class AuthActivity : AppCompatActivity() {
                     sendLoginNotification(user?.email)
                     updateUI(user)
                 } else {
-                    Toast.makeText(this, "Falha no login: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                    Toast.makeText(this, "Falha no login", Toast.LENGTH_LONG).show()
                 }
             }
     }
