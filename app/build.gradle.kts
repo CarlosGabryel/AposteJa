@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId = "com.nayane.estadoatividade"
-        minSdk = 31
+        minSdk = 29
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.ui.android)
     implementation(libs.androidx.foundation.android)
     implementation(libs.mediation.test.suite)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -66,5 +67,6 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.firebase:firebase-auth-ktx")
     implementation(platform("com.google.firebase:firebase-bom:33.9.0"))
+    implementation("com.google.firebase:firebase-messaging-ktx")
 
 }

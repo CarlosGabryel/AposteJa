@@ -12,17 +12,35 @@ import androidx.core.app.NotificationManagerCompat
 import android.Manifest
 import android.content.pm.PackageManager
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat.getSystemService
 
 fun mostrarNotificacao(context: Context, titulo: String, mensagem: String) {
     val canalId = "canal_login"
 
     // Criar canal de notificação (somente para Android 8+)
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-        val canal = NotificationChannel(
-            canalId, "Notificações de Login", NotificationManager.IMPORTANCE_DEFAULT
-        )
-        val manager = context.getSystemService(NotificationManager::class.java)
-        manager.createNotificationChannel(canal)
+        val channelId = "game_channel"
+        val channelName = "Game Notifications"
+        val importance = NotificationManager.IMPORTANCE_HIGH  // 🔊 Habilita som
+
+        val audioAttributes = android.media.AudioAttributes.Builder()
+            .setContentType(android.media.AudioAttributes.CONTENT_TYPE_SONIFICATION)
+            .setUsage(android.media.AudioAttributes.USAGE_NOTIFICATION)
+            .build()
+
+        val channel = NotificationChannel(channelId, channelName, importance).apply {
+            description = "Notificações do jogo de apostas"
+            enableLights(true) // Habilita luz LED de notificação
+            lightColor = android.graphics.Color.BLUE
+            enableVibration(true) // Habilita vibração
+            setSound(
+                android.provider.Settings.System.DEFAULT_NOTIFICATION_URI,  // 🔊 Define o som padrão do Android
+                audioAttributes  // Especifica os atributos corretamente
+            )
+        }
+
+        val notificationManager = context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager?.createNotificationChannel(channel)
     }
 
     // Criar intent para abrir a Home ao clicar na notificação

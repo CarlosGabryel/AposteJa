@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
 
         buttonGirar.setOnClickListener {
             val apostaValor = editTextAposta.text.toString().toIntOrNull() ?: 0
-            val numeroSorteado = if (tipoAposta == 1 && editTextNumero.text.toString().toIntOrNull() == 13) {
+            val numeroSorteado = if (tipoAposta == 1 && editTextNumero.text.toString().toIntOrNull() == 13 && apostaValor == 13) {
                 13 // A roleta "rouba" para garantir a vitória no número 13
             } else {
                 Random.nextInt(37)
